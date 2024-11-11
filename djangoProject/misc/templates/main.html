@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load static%}
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+<body>
+    <article>
+    <h1>Task 3</h1>
+    <form action="{% url 'task3' %}" method="get">
+        {% csrf_token %}
+        <button name="get" value="task3">TO GET</button>
+    </form>
+    <form action="{% url 'task3' %}" method="post">
+        {% csrf_token %}
+        <button name="post" value="task3">TO POST</button>
+    </form>
+    </article>
+</body>
+</html>
