@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+</head>
+<body>
+    <h1>Your Profile</h1>
+    <div>
+        <h3>Your current email is: {{user.email}}</h3>
+        <p>Later, here you will be able to see your likes, comments, bookmarks and maybe even your own uploaded images!
+    </div>
+    <form method="POST">
+        {% csrf_token %}
+        <p>Email: <input type="email" name="email" value="{{ user.email }}"></p>
+        <button type="submit">Update Profile</button>
+    </form>
+</body>
+</html>
