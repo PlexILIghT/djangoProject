@@ -5,6 +5,7 @@ from django.contrib import messages
 from .forms import CustomUserCreationForm
 from django.contrib.auth.forms import AuthenticationForm
 import json
+from images.models import Image
 # Create your views here.
 
 def register_view(request):
@@ -40,7 +41,10 @@ def profile_view(request):
         user.save()
         messages.success(request, 'Profile updated successfully.')
         return redirect('profile')
-    return render(request, 'profile.html', {'user': request.user})
+    
+    liked_images = Image.objects.filter(liked_by=request.user)  # Получаем лайкнутые картинки
+    return render(request, 'profile.html', {'user': request.user, 'liked_images': liked_images})
+
 
 @decorators.login_required
 def delete_user_view(request):

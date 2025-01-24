@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/images.css' %}">
+    <title>Images</title>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+    <div class="gallery">
+        {% for image in images %}
+        <div class="image-container">
+            <img src="{{ image.image.url }}" alt="Image">
+            <p class="description">{{ image.text }}</p>
+            <p class="likes-count">{{ image.liked_by.count }} likes</p>
+            
+            <form action="{% url 'like_image' image.id %}" method="POST" style="margin-top: 10px;">
+                {% csrf_token %}
+                {% if request.user in image.liked_by.all %}
+                    <button type="submit" class="like-button">Unlike</button>
+                {% else %}
+                    <button type="submit" class="like-button">Like</button>
+                {% endif %}
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
