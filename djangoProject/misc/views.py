@@ -3,11 +3,8 @@ from django.shortcuts import redirect, render
 
 # Create your views here.
 
-def index(request):
-    return render(request, 'main.html')
-
-def task2(request):
-    pass
+def homepage_view(request):
+    return render(request, 'homepage.html')
 
 def task3(request):
     if request.method == 'GET':

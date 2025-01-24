@@ -6,7 +6,7 @@ from django.conf import settings
 from misc import views
 
 urlpatterns = [
-    path("", views.index),
+    path("", views.homepage_view, name="homepage"),
     path("task3", views.task3, name="task3"),
     path("redirected", views.redirected, name="redirected"),
 ]
