@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'images',
     'misc',
     'user',
+    'api',
 ]
 
 MIDDLEWARE = [
