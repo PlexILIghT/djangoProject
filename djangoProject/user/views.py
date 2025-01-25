@@ -41,7 +41,13 @@ def profile_view(request):
         user.save()
         messages.success(request, 'Profile updated successfully.')
         return redirect('profile')
-    return render(request, 'profile.html', {'user': request.user})
+    
+    liked_images = Image.objects.filter(liked_by=request.user)
+
+    return render(request, 'profile.html', {
+        'user': request.user,
+        'liked_images': liked_images
+    })
 
 
 @decorators.login_required
