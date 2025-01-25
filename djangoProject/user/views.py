@@ -52,5 +52,5 @@ def delete_user_view(request):
         user = request.user
         user.delete()
         messages.success(request, 'Your account has been deleted.')
-        return redirect('register')  # Или другой URL
-    return render(request, 'delete_user.html')
+        return redirect('register')
+    return render(request, 'delete.html')
