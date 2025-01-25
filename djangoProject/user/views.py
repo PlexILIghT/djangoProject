@@ -36,10 +36,8 @@ def profile_view(request):
     if request.method == 'POST':
         user = request.user
         email = request.POST.get('email', user.email)
-        phone_number = request.POST.get('phone_number', user.phone_number)
 
         user.email = email
-        user.phone_number = phone_number
         user.save()
         messages.success(request, 'Profile updated successfully.')
         return redirect('profile')
