@@ -26,14 +26,13 @@ SECRET_KEY='django-insecure-+*z7*5*nh2xh-zg49jwgod@&hxl*tg)(x^tdbs7ljg_7a3)y8o'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+import logging
+
+logger = logging.getLogger('django.security.csrf')
+logger.setLevel(logging.DEBUG)
+
 ALLOWED_HOSTS = ["*"]
 
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
-
-CSRF_TRUSTED_ORIGINS = [
-    "https://djangoproject-production-5a9f.up.railway.app/"
-]
 # Application definition
 
 INSTALLED_APPS = [
