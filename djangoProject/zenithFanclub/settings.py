@@ -33,6 +33,11 @@ logger.setLevel(logging.DEBUG)
 
 ALLOWED_HOSTS = ["*"]
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://djangoproject-production-5a9f.up.railway.app/",
+    "https://*.up.railway.app"
+]
+
 # Application definition
 
 INSTALLED_APPS = [
