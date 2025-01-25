@@ -17,7 +17,7 @@ def register_view(request):
             return redirect('login')
     else:
         form = CustomUserCreationForm()
-    return render(request, 'user/register.html', {'form': form})
+    return render(request, 'register.html', {'form': form})
 
 def login_view(request):
     if request.method == 'POST':
@@ -29,7 +29,7 @@ def login_view(request):
             return redirect('profile')
     else:
         form = AuthenticationForm()
-    return render(request, 'user/login.html', {'form': form})
+    return render(request, 'login.html', {'form': form})
 
 @decorators.login_required
 def profile_view(request):
@@ -43,7 +43,7 @@ def profile_view(request):
         user.save()
         messages.success(request, 'Profile updated successfully.')
         return redirect('profile')
-    return render(request, 'user/profile.html', {'user': request.user})
+    return render(request, 'profile.html', {'user': request.user})
 
 
 @decorators.login_required
@@ -53,4 +53,4 @@ def delete_user_view(request):
         user.delete()
         messages.success(request, 'Your account has been deleted.')
         return redirect('register')  # Или другой URL
-    return render(request, 'user/delete_user.html')
+    return render(request, 'delete_user.html')
