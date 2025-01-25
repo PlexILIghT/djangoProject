@@ -16,7 +16,7 @@ def register_view(request):
             messages.success(request, 'Registration successful. You can now log in.')
             return redirect('login')
     else:
-        form = CustomUserCreationForm()
+        form = CustomUserCreationForm(request)
     return render(request, 'register.html', {'form': form})
 
 def login_view(request):
@@ -28,7 +28,7 @@ def login_view(request):
             messages.success(request, 'You are now logged in.')
             return redirect('profile')
     else:
-        form = AuthenticationForm()
+        form = AuthenticationForm(request)
     return render(request, 'login.html', {'form': form})
 
 @decorators.login_required
