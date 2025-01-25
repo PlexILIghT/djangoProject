@@ -10,14 +10,14 @@
 <body>
     <h1>Image Gallery</h1>
     <form action="/users/profile" method="get">
-        <button type="submit">To Profile</button>
+        <button class="nav" type="submit">To Profile</button>
     </form>
     <div class="gallery">
         {% for image in images %}
         <div class="image-container">
             <img src="{{ image.image.url }}" alt="Image">
             <p class="description">{{ image.text }}</p>
-            <p class="likes-count">{{ image.liked_by.count }} likes</p>
+            <p class="likes-count">{{ image.liked_by.count }} {% if image.liked_by.count is 1 %}like{% else %}likes{% endif %}</p>
             
             <form action="{% url 'like_image' image.id %}" method="POST" style="margin-top: 10px;">
                 {% csrf_token %}

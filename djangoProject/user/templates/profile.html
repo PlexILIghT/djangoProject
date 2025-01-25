@@ -26,6 +26,20 @@
             font-size: 12px;
             color: #888;
         }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            border-color: darkturquoise;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color:rgb(33, 91, 153);
+        }
     </style>
 </head>
 <body>
@@ -67,7 +81,7 @@
 
     <div>
     <label>Wrong account?</label>
-        <form action="{% url 'login' %}" method="get">
+        <form action="/users/login" method="get">
         <button type="submit">Yes. Logout</button>
         </form>
 
@@ -76,6 +90,6 @@
         <button type="submit">Take me</button>
     </form>
     </div>
-    
+
 </body>
 </html>
