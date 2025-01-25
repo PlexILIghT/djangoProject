@@ -10,7 +10,7 @@ from images.models import Image
 
 def register_view(request):
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
+        form = CustomUserCreationForm(request, request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Registration successful. You can now log in.')
@@ -21,7 +21,7 @@ def register_view(request):
 
 def login_view(request):
     if request.method == 'POST':
-        form = AuthenticationForm(data=request.POST)
+        form = AuthenticationForm(request, data=request.POST)
         if form.is_valid():
             user = form.get_user()
             login(request, user)
@@ -52,5 +52,5 @@ def delete_user_view(request):
         user = request.user
         user.delete()
         messages.success(request, 'Your account has been deleted.')
-        return redirect('/egister') 
+        return redirect('/register') 
     return render(request, 'delete_user.html')
