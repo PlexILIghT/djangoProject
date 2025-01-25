@@ -148,7 +148,3 @@ AUTH_USER_MODEL = 'user.User'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-DJANGO_SUPERUSER_USERNAME="admin"
-DJANGO_SUPERUSER_PASSWORD="admin"
-DJANGO_SUPERUSER_EMAIL="liexa2024@gmail.com"
