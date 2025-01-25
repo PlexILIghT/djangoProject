@@ -33,6 +33,7 @@
     <h2>Your Profile</h2>
     <div>
         <h3>Your current email is: {{ user.email }}</h3>
+        <a href="/users/logout">Logout</a>
         <form method="POST">
             {% csrf_token %}
             <p>Email: <input type="email" name="email" value="{{ user.email }}"></p>
@@ -41,13 +42,18 @@
     </div>
 
     <h2>Your Liked Images</h2>
+
+    <form action="/image" method="get">
+        <button type="submit">Watch images</button>
+    </form>
+
     <div class="gallery">
         {% if liked_images %}
             {% for image in liked_images %}
             <div class="image-container">
                 <img src="{{ image.image.url }}" alt="Image">
                 <p class="description">{{ image.text }}</p>
-                <p class="likes-count">{{ image.liked_by.count }} likes</p>
+                <p class="likes-count">{{ image.liked_by.count }} {% if image.liked_by.count is 1 %}like{% else %}likes{% endif %}</p>
                 <form action="{% url 'like_image' image.id %}" method="POST">
                     {% csrf_token %}
                     <button type="submit">Unlike</button>
@@ -58,5 +64,18 @@
             <p>You haven't liked any images yet.</p>
         {% endif %}
     </div>
+
+    <div>
+    <label>Wrong account?</label>
+        <form action="{% url 'login' %}" method="get">
+        <button type="submit">Yes. Logout</button>
+        </form>
+
+    <label>Want to delete your account?</label>
+    <form action="/users/delete" method="get">
+        <button type="submit">Take me</button>
+    </form>
+    </div>
+    
 </body>
 </html>

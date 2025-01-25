@@ -9,6 +9,9 @@
 </head>
 <body>
     <h1>Image Gallery</h1>
+    <form action="/users/profile" method="get">
+        <button type="submit">To Profile</button>
+    </form>
     <div class="gallery">
         {% for image in images %}
         <div class="image-container">

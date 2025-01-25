@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.contrib.auth import login, decorators
+from django.contrib.auth import login, logout, decorators
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import CustomUserCreationForm
@@ -58,3 +58,8 @@ def delete_user_view(request):
         messages.success(request, 'Your account has been deleted.')
         return redirect('register')
     return render(request, 'delete.html')
+
+@decorators.login_required
+def logout_view(request):
+    logout(request)
+    return redirect('login')
